@@ -58,6 +58,12 @@ h1, h2, h3 { line-height: 1.2; }
 .card p { color: var(--muted); }
 .features .card { text-align: center; }
 .center { margin-top: 34px; }
+.notice { display: flex; gap: 14px; align-items: flex-start; max-width: 760px; margin: 28px auto 0;
+  background: rgba(139,92,246,0.08); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+  border-radius: 12px; padding: 16px 20px; }
+.notice .ico { font-size: 1.4rem; margin: 0; line-height: 1.4; }
+.notice p { color: var(--muted); margin: 0; }
+.notice strong { color: var(--text); }
 
 /* Tiers */
 .tiers { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); align-items: stretch; }
