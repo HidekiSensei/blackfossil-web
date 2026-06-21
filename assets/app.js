@@ -23,31 +23,61 @@ setInterval(loadStatus, 30000);
 
 // ── Regeln (kategorisiert — hier einfach editieren) ──────────────────────────
 const RULES = [
-  { title: '📜 Allgemein', items: [
-    'Respektiere alle Spieler — kein Rassismus, keine Beleidigungen, kein Harassment.',
-    'Kein Cheaten, Exploiten oder Ausnutzen von Bugs. Bugs bitte per Ticket melden.',
-    'Englisch & Deutsch im Voice sind willkommen — bleibt freundlich.',
-  ]},
-  { title: '⚔️ PVP-Zone', items: [
-    'In der PVP-Zone ist Kampf jederzeit erlaubt.',
-    'Kein gezieltes Spawn-Camping an Eingängen.',
-    'Mixpacking nur im erlaubten Rahmen (siehe Server-Regeln).',
-  ]},
-  { title: '🛡️ PVE-Zone', items: [
-    'In der PVE-Zone ist Angreifen anderer Spieler verboten.',
-    'Safe-Zone zum Wachsen, Treffen und Erholen.',
-    'Verstöße führen zu Verwarnung oder Bann.',
-  ]},
-  { title: '🌿 Realismus (außerhalb der Zonen)', items: [
-    'Außerhalb von PVP/PVE gelten Realismus-Regeln: verhalte dich wie das Tier.',
-    'Kein grundloses Töten über dem Sättigungsbedarf (No KOS ohne Grund).',
-    'Rudel- und Reviergrenzen respektieren.',
-  ]},
-  { title: '🎙️ Voice & Overlay', items: [
-    'Proximity-Voice ist In-Character gedacht — kein Mikro-Spam, kein Earrape.',
-    'Das Overlay ist erlaubt und Teil des Server-Erlebnisses.',
-    'Keine Manipulation oder Reverse-Engineering der Server-/Overlay-Systeme.',
-  ]},
+  { title: '⚖️ Admins & Grundsätzliches', body: `<ul>
+    <li>Die <strong>Admins haben das letzte Wort</strong> — ihren Anweisungen ist Folge zu leisten.</li>
+    <li>Anliegen & Meldungen laufen über ein <strong>Ticket</strong>, nicht im Chat/Voice.</li>
+    <li>Respektvoller Umgang — kein Toxic, keine Beleidigungen, kein Drama, keine Diskriminierung.</li>
+    <li><strong>Cheats, Exploits, Bug-Abuse & Combat-Logging</strong> sind verboten → Ban.</li>
+    <li>Kein <strong>Stream-Sniping / Ghosting</strong>.</li>
+    <li>Unwissenheit schützt nicht vor Konsequenzen.</li></ul>` },
+
+  { title: '🦖 Realism-Zone — Hauptmap', body: `
+    <p><strong>Töten braucht einen Grund:</strong> Hunger (dann fressen), Revier-/Nestverteidigung, Selbstverteidigung, Rudelschutz. <strong>Kein KOS</strong> ohne Grund.</p>
+    <ul><li>Nach einem Kill: fressen oder klaren Grund haben — kein sinnloses Schlachten.</li>
+    <li><strong>Gruppengrößen</strong> der Art respektieren — kein Mega-Zerg.</li></ul>
+    <p class="r-sub">🔗 MixPacking</p>
+    <ul><li><strong>Verboten:</strong> Spezies unterschiedlicher Ernährung gemeinsam im Kampf (Karni + Herbi zusammen jagen/PvP). Kein Herbivore als Tank/Köder im Karni-Kampf und umgekehrt.</li>
+    <li><strong>Erlaubt:</strong> friedliche Zusammenarbeit über Arten hinweg — reisen, koexistieren, warnen, soziale Mischgruppen.</li>
+    <li><strong>Gleiche Diät</strong> darf zusammen kämpfen (realistische Gruppengröße).</li>
+    <li><strong>Faustregel:</strong> zusammenleben & kooperieren ja — über Diätgrenzen zusammen kämpfen nein.</li></ul>
+    <p class="r-sub">🛡️ Schutz & Kampfansage</p>
+    <ul><li>Friedliche Koexistenz steht unter <strong>Schutz</strong> — keine Überraschungsangriffe innerhalb einer friedlichen Gruppe.</li>
+    <li>Ein Kampf beginnt erst, wenn das <strong>Ziel per Voice-Chat in Hörweite angesagt ("gecalled")</strong> wird — dann ist die Gruppe zum Kampf freigegeben.</li>
+    <li>Ab dem Call gilt nur noch <strong>Flucht oder Kampf</strong> — kein Zurückrudern.</li></ul>` },
+
+  { title: '🩸 PvP-Zone — The Pit', body: `
+    <p>Hier ist Kampf das Ziel — aber <strong>fair</strong>.</p>
+    <ul><li><strong>Zugang nur per Teleport</strong> — wer rein geht, willigt in PvP ein.</li>
+    <li><strong>Keine Einmischung in laufende Kämpfe.</strong> Ein Kampf gehört nur den Beteiligten — kein Reinspringen, kein Abräumen des Geschwächten.</li>
+    <li><strong>Kein Third-Partying / Ganking.</strong> Dem Sieger eine kurze Erholungsphase lassen.</li>
+    <li><strong>Über dem Packlimit nur nach Absprache</strong> (Überzahl nur mit Einverständnis der Gegenpartei).</li>
+    <li><strong>Kämpfe ehren</strong> (1v1, Gruppen, Größenklasse). Kein Locken in AI/Wasser/Out-of-Bounds.</li>
+    <li>Kein Combat-TP / Combat-Logging.</li>
+    <li>Kein Abcampen des Pit-Eingangs.</li>
+    <li><strong>GG-Kultur</strong> — kein Flaming. Was im Pit passiert, bleibt im Pit.</li></ul>` },
+
+  { title: '🌿 PvE-Zone — Water Access', body: `
+    <p>Reine <strong>Safezone</strong>: Growen, Chillen, Sozialisieren — null Kampf.</p>
+    <ul><li><strong>Striktes PvP-Verbot</strong> — kein Angreifen, Beißen, Trampeln, Schubsen oder Behindern anderer Spieler-Dinos.</li>
+    <li><strong>Kein Nesting in dieser Zone.</strong></li>
+    <li>Kein Baiten/Locken aus der Zone oder an die Grenze.</li>
+    <li>Kein Grenz-Camping durch Karnivoren.</li>
+    <li>Kein Grow-Boost in dieser Zone — natürliches Wachsen.</li>
+    <li>Rücksicht auf wachsende Spieler, keine Futter-/Wasserstellen blockieren.</li>
+    <li><strong>Drama bleibt draußen</strong> — bei Problemen Admin/Ticket.</li></ul>` },
+
+  { title: '🌀 Teleport-Regeln', body: `<ul>
+    <li><strong>Kein TP-Abuse</strong> — nicht aus Kämpfen flüchten oder Vorteile erschleichen. Im Kampf wird <strong>nicht</strong> teleportiert.</li>
+    <li><strong>Off-Timer:</strong> nach einem TP 5 Minuten keinen Kampf initiieren.</li>
+    <li>Kein direkter Anschlusskampf unmittelbar nach dem TP.</li>
+    <li>Kein Abcampen des TP-Punkts.</li>
+    <li><strong>Kommunikationspflicht:</strong> ansagen, wenn du gerade teleportierst.</li></ul>` },
+
+  { title: '🔴 Konsequenzen', body: `<ul>
+    <li>Je nach Schwere: <strong>Verwarnung → temporärer Ban → permanenter Ban</strong>.</li>
+    <li><strong>Schwere Verstöße</strong> (Cheats, Exploits, absichtliches/wiederholtes Regelbrechen) = sofortiger Ban.</li>
+    <li>Bei Meldungen <strong>Beweise</strong> (Clips/Screenshots) im Ticket beifügen.</li>
+    <li>Admins entscheiden im Einzelfall; ihr Urteil ist final.</li></ul>` },
 ];
 
 // ── FAQ ──────────────────────────────────────────────────────────────────────
@@ -66,6 +96,6 @@ function acc(title, bodyHTML) {
   return d;
 }
 const rulesEl = document.getElementById('rulesAcc');
-RULES.forEach((r) => rulesEl.appendChild(acc(r.title, `<ul>${r.items.map((i) => `<li>${i}</li>`).join('')}</ul>`)));
+RULES.forEach((r) => rulesEl.appendChild(acc(r.title, r.body)));
 const faqEl = document.getElementById('faqAcc');
 FAQ.forEach((f) => faqEl.appendChild(acc(f.q, `<p>${f.a}</p>`)));
