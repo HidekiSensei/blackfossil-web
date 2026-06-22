@@ -82,7 +82,7 @@ const RULES = [
 
 // ── FAQ ──────────────────────────────────────────────────────────────────────
 const FAQ = [
-  { q: 'Wie werde ich Beta-Tester (und bekomme den Benefit)?', a: 'Tritt unserem Discord bei und öffne ein <strong>Hilfe-Ticket</strong> mit dem Hinweis, dass du Beta-Tester werden möchtest. Nur über ein Ticket bekommst du den Beta-Zugang samt Benefit. Die ersten 30 Plätze sind limitiert.' },
+  { q: 'Wie werde ich Beta-Tester (und bekomme den Benefit)?', a: 'Tritt unserem Discord bei und öffne ein <strong>Hilfe-Ticket</strong> mit dem Hinweis, dass du Beta-Tester werden möchtest. Nur über ein Ticket bekommst du den Beta-Zugang samt Benefit. Die ersten 100 Plätze sind limitiert.' },
   { q: 'Wie viele Spieler passen auf den Server?', a: 'Während der Beta ist der Server auf <strong>100 Slots gleichzeitig</strong> limitiert. Wir optimieren den Server so, dass diese Plätze möglichst ruckelfrei laufen.' },
   { q: 'Was ist das Overlay?', a: 'Eine Desktop-App, die dir Proximity-Voice, eine Live-Karte, deine Dino-Stats, eine Garage und einen Dino-Markt direkt im Spiel bietet — ohne Alt-Tab. Updates installiert es automatisch.' },
   { q: 'Kostet der Server Geld?', a: 'Nein. Der Server ist gratis spielbar (Rang „Fossil"). Wer möchte, kann uns mit einem Rang unterstützen und Komfort-Features freischalten.' },
