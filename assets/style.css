@@ -192,6 +192,21 @@ footer { text-align: center; padding: 40px 6vw; border-top: 1px solid var(--bord
 .beta-note strong { color: var(--text); }
 .beta-note-ico { font-size: 1.2rem; line-height: 1.4; }
 
+/* ═══════════ Lightning-Bolts im Hero (wie im Overlay) ═══════════ */
+.hero-bolts { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.hero-bolts .bolt { fill: none; stroke: rgba(var(--accent-rgb),0.85); stroke-width: 2.4;
+  stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; opacity: 0;
+  filter: url(#bf-lightning) drop-shadow(0 0 7px rgba(var(--accent-rgb),0.95)); }
+.bolt.b1  { animation: boltA 7s ease-out infinite; }
+.bolt.b1b { animation: boltA 7s ease-out infinite .04s; }
+.bolt.b2  { animation: boltB 9s ease-out infinite; }
+.bolt.b2b { animation: boltB 9s ease-out infinite .05s; }
+.bolt.b3  { animation: boltC 11s ease-out infinite; }
+@keyframes boltA { 0%,100%{opacity:0} 3%{opacity:.95} 5%{opacity:.2} 7%{opacity:.85} 10%{opacity:0} }
+@keyframes boltB { 0%,39%,100%{opacity:0} 42%{opacity:.9} 44%{opacity:.25} 47%{opacity:.8} 51%{opacity:0} }
+@keyframes boltC { 0%,69%,100%{opacity:0} 72%{opacity:.7} 74%{opacity:.15} 77%{opacity:.6} 80%{opacity:0} }
+
 @media (prefers-reduced-motion: reduce) {
-  .hero-glow, .hero-logo, .beta-cta-glow { animation: none; }
+  .hero-glow, .hero-logo, .beta-cta-glow, .hero-bolts .bolt { animation: none; }
+  .hero-bolts { display: none; }
 }

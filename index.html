@@ -8,6 +8,19 @@
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
+  <!-- Globaler Blitz-Filter (gezackte Kanten wie im Overlay) -->
+  <svg width="0" height="0" aria-hidden="true" style="position:absolute">
+    <defs>
+      <filter id="bf-lightning" x="-35%" y="-35%" width="170%" height="170%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="2" seed="3" result="n">
+          <animate attributeName="seed" values="1;9;3;12;1" dur="2.6s" repeatCount="indefinite"/>
+          <animate attributeName="baseFrequency" values="0.018;0.032;0.018" dur="5s" repeatCount="indefinite"/>
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+    </defs>
+  </svg>
+
   <!-- Navigation -->
   <header id="nav">
     <a href="#top" class="brand"><img src="assets/logo.png" alt="" class="brand-logo" /> <span>BLACK&nbsp;FOSSIL</span></a>
@@ -23,6 +36,13 @@
   <!-- Hero -->
   <section id="top" class="hero">
     <div class="hero-glow" aria-hidden="true"></div>
+    <svg class="hero-bolts" viewBox="0 0 1440 520" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
+      <polyline class="bolt b1" points="300,-10 286,70 326,104 292,168 338,212 300,300"/>
+      <polyline class="bolt b1b" points="326,104 372,120 360,176"/>
+      <polyline class="bolt b2" points="1140,-10 1162,84 1126,128 1168,196 1132,242 1158,330"/>
+      <polyline class="bolt b2b" points="1126,128 1086,150 1100,206"/>
+      <polyline class="bolt b3" points="720,-10 710,56 742,92 716,150"/>
+    </svg>
     <div class="hero-inner">
       <img src="assets/logo.png" alt="Black Fossil" class="hero-logo" />
       <span class="badge">🧪 Beta-Phase · Gründungs-Tester gesucht</span>
