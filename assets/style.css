@@ -206,6 +206,19 @@ footer { text-align: center; padding: 40px 6vw; border-top: 1px solid var(--bord
 @keyframes boltB { 0%,39%,100%{opacity:0} 42%{opacity:.9} 44%{opacity:.25} 47%{opacity:.8} 51%{opacity:0} }
 @keyframes boltC { 0%,69%,100%{opacity:0} 72%{opacity:.7} 74%{opacity:.15} 77%{opacity:.6} 80%{opacity:0} }
 
+/* ═══════════ Banner-CTA (cinematischer Abschluss) ═══════════ */
+.cta-banner { position: relative; overflow: hidden; padding: 16vh 6vw; border-top: 1px solid var(--border);
+  background: var(--bg); }
+.cta-banner::before { content: ''; position: absolute; inset: 0; z-index: 0;
+  background: url('banner.png') center/cover no-repeat; }
+.cta-banner::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    radial-gradient(70% 90% at 50% 50%, rgba(10,6,19,0.45), rgba(10,6,19,0.86) 80%),
+    linear-gradient(180deg, var(--bg), transparent 22%, transparent 78%, var(--bg)); }
+.cta-banner .cta-inner { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+.cta-banner h2 { text-shadow: 0 2px 24px rgba(0,0,0,0.7), 0 0 30px rgba(var(--accent-rgb),0.35); }
+.cta-banner p { color: #cfc7e6; }
+
 @media (prefers-reduced-motion: reduce) {
   .hero-glow, .hero-logo, .beta-cta-glow, .hero-bolts .bolt { animation: none; }
   .hero-bolts { display: none; }
