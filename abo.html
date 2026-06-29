@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ränge & Unterstützen — BlackFossil</title>
+  <meta name="description" content="Unterstütze den BlackFossil-Server mit einem monatlichen Rang — Komfort- & Kosmetik-Perks, sicher über PayPal. Kein Pay-to-Win." />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <meta name="theme-color" content="#8b5cf6" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <header id="nav">
+    <a href="index.html" class="brand"><img src="assets/logo.png" alt="" class="brand-logo" /> <span>BLACK&nbsp;FOSSIL</span></a>
+    <nav>
+      <a href="index.html#overlay">Overlay</a>
+      <a href="index.html#rules">Regeln</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="https://discord.gg/4sCc7c5YRq" class="btn btn-sm" target="_blank" rel="noopener">Discord</a>
+    </nav>
+  </header>
+
+  <section class="section abo-head">
+    <div class="section-head">
+      <span class="kicker">⚡ Unterstütze BlackFossil</span>
+      <h1>Wähle deinen Rang</h1>
+      <p>BlackFossil bleibt <strong>kostenlos spielbar</strong>. Mit einem monatlichen Rang hältst du den Server am Laufen und schaltest <strong>Komfort- & Kosmetik-Perks</strong> frei — <strong>kein Pay-to-Win</strong>. Monatlich kündbar.</p>
+    </div>
+
+    <!-- Login-Status -->
+    <div id="loginBox" class="login-box">
+      <p>Logge dich zuerst mit <strong>Discord</strong> ein — so landet dein Rang automatisch im richtigen Account.</p>
+      <button id="loginBtn" class="btn btn-lg">🔗 Mit Discord einloggen</button>
+    </div>
+    <div id="userBox" class="user-box" hidden>
+      <span>Eingeloggt als <strong id="userName"></strong></span>
+      <button id="logoutBtn" class="btn btn-sm btn-ghost">Abmelden</button>
+    </div>
+
+    <!-- Creator-Code (optional) -->
+    <div class="creator-box">
+      <label for="creatorCode">💜 Creator-Code <span class="muted small">(optional)</span></label>
+      <input id="creatorCode" type="text" maxlength="32" autocomplete="off" spellcheck="false" placeholder="z. B. JoeDom" />
+      <p class="muted small">Unterstütze mit deinem Abo gleichzeitig deinen Lieblings-Creator: Gib seinen Code ein, dann geht ein Teil deiner Unterstützung direkt an ihn — <strong>dein Preis bleibt exakt gleich</strong>.</p>
+    </div>
+
+    <!-- Setup-Hinweis, falls PayPal noch nicht konfiguriert -->
+    <div id="setupNote" class="beta-note" hidden style="max-width:640px;margin:18px auto 0">
+      <span class="beta-note-ico">🛠️</span>
+      <p>Die Bezahlung wird gerade eingerichtet. Schau gleich nochmal vorbei oder frag im <a href="https://discord.gg/4sCc7c5YRq" target="_blank" rel="noopener">Discord</a>.</p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="tiers tiers-buy">
+      <div class="tier">
+        <div class="tier-ico">🦴</div>
+        <h3>Knochen</h3>
+        <div class="tier-price"><span class="grad">4,99&nbsp;€</span><span class="per">/ Monat</span></div>
+        <ul class="tier-perks">
+          <li>Supporter-Rolle im Discord</li>
+          <li>Komfort-Extras im Overlay</li>
+          <li>Unterstützt den Server ❤️</li>
+        </ul>
+        <div class="pp-btn" id="pp-knochen"></div>
+      </div>
+      <div class="tier tier-feat">
+        <div class="tier-tag">Beliebt</div>
+        <div class="tier-ico">🟠</div>
+        <h3>Bernstein</h3>
+        <div class="tier-price"><span class="grad">9,99&nbsp;€</span><span class="per">/ Monat</span></div>
+        <ul class="tier-perks">
+          <li>Alles aus <strong>Knochen</strong></li>
+          <li>Mehr Komfort- & Kosmetik-Perks</li>
+          <li>Bernstein-Rolle & Badge</li>
+        </ul>
+        <div class="pp-btn" id="pp-bernstein"></div>
+      </div>
+      <div class="tier">
+        <div class="tier-ico">⬛</div>
+        <h3>Obsidian</h3>
+        <div class="tier-price"><span class="grad">19,99&nbsp;€</span><span class="per">/ Monat</span></div>
+        <ul class="tier-perks">
+          <li>Alles aus <strong>Bernstein</strong></li>
+          <li>Maximaler Komfort, alle Kosmetik-Perks</li>
+          <li>Obsidian-Rolle & Badge</li>
+        </ul>
+        <div class="pp-btn" id="pp-obsidian"></div>
+      </div>
+    </div>
+
+    <p class="muted small center" style="margin-top:24px;max-width:680px;margin-left:auto;margin-right:auto">
+      Bezahlung & wiederkehrende Abbuchung laufen sicher über <strong>PayPal</strong>. Du kündigst jederzeit selbst in deinem PayPal-Konto.
+      Mit dem Kauf akzeptierst du unsere <a href="agb.html">AGB &amp; Widerrufsbelehrung</a>. Infos zur Datenverarbeitung: <a href="datenschutz.html">Datenschutz</a>.
+    </p>
+  </section>
+
+  <footer>
+    <div class="foot-brand"><img src="assets/logo.png" alt="" class="foot-logo" /> <strong>BLACK FOSSIL</strong></div>
+    <div class="foot-legal muted small">
+      <a href="impressum.html">Impressum</a> ·
+      <a href="agb.html">AGB &amp; Widerruf</a> ·
+      <a href="datenschutz.html">Datenschutz</a>
+    </div>
+    <div class="muted small">Nicht mit Dondi/Afterthought verbunden. The Isle ist eine Marke ihrer jeweiligen Inhaber.</div>
+  </footer>
+
+  <!-- Erfolg-Overlay -->
+  <div id="thanks" class="thanks" hidden>
+    <div class="thanks-card">
+      <div class="thanks-ico">⚡</div>
+      <h2>Danke für deine Unterstützung!</h2>
+      <p>Dein Rang wird gerade freigeschaltet — das kann ein paar Sekunden dauern. Du siehst ihn gleich in Discord & im Overlay.</p>
+      <button class="btn btn-lg" onclick="document.getElementById('thanks').hidden=true">Schließen</button>
+    </div>
+  </div>
+
+  <script src="assets/abo.js"></script>
+</body>
+</html>

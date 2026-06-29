@@ -94,13 +94,14 @@ const RULES = [
 
 // ── FAQ ──────────────────────────────────────────────────────────────────────
 const FAQ = [
-  { q: 'Wie werde ich Beta-Tester (und bekomme den Benefit)?', a: 'Tritt unserem Discord bei und öffne ein <strong>Hilfe-Ticket</strong> mit dem Hinweis, dass du Beta-Tester werden möchtest. Nur über ein Ticket bekommst du den Beta-Zugang samt Benefit. Die ersten 100 Plätze sind limitiert.' },
-  { q: 'Wie viele Spieler passen auf den Server?', a: 'Während der Beta ist der Server auf <strong>100 Slots gleichzeitig</strong> limitiert. Wir optimieren den Server so, dass diese Plätze möglichst ruckelfrei laufen.' },
+  { q: 'Wie fange ich an?', a: 'Tritt unserem <strong>Discord</strong> bei, verknüpfe dort deinen Account (Account-Link-Button), lade das <strong>Overlay</strong> herunter, installiere es und logge dich mit Discord ein — fertig. Der Server ist online.' },
   { q: 'Was ist das Overlay?', a: 'Eine Desktop-App, die dir Proximity-Voice, eine Live-Karte, deine Dino-Stats, eine Garage und einen Dino-Markt direkt im Spiel bietet — ohne Alt-Tab. Updates installiert es automatisch.' },
-  { q: 'Kostet der Server Geld?', a: 'Nein. Der Server ist gratis spielbar (Rang „Fossil"). Wer möchte, kann uns mit einem Rang unterstützen und Komfort-Features freischalten.' },
+  { q: 'Kostet der Server Geld?', a: 'Nein. Der Server ist <strong>gratis spielbar</strong> (Rang „Fossil"). Wer möchte, kann uns freiwillig mit einem monatlichen Rang unterstützen und dafür Komfort-Features freischalten.' },
+  { q: 'Wie funktioniert ein Rang / das Abo?', a: 'Auf der <a href="abo.html">Ränge-Seite</a> loggst du dich mit Discord ein und schließt dein Wunsch-Abo sicher über <strong>PayPal</strong> ab. Dein Rang (Knochen, Bernstein oder Obsidian) wird dir danach <strong>automatisch</strong> in Discord & im Spiel freigeschaltet.' },
+  { q: 'Kann ich jederzeit kündigen?', a: 'Ja. Du kündigst dein Abo jederzeit selbst in deinem <strong>PayPal-Konto</strong> unter „Automatische Zahlungen". Dein Rang bleibt bis zum Ende des bezahlten Zeitraums aktiv.' },
   { q: 'Ist das Pay-to-Win?', a: 'Nein. Die Ränge schalten Komfort- und Kosmetik-Features frei (z.B. Skin-Editor, kürzere Cooldowns). Gameplay-Können bleibt entscheidend.' },
   { q: 'Welche Version von The Isle?', a: 'Wir spielen die aktuelle Evrima-Version (Gateway-Map).' },
-  { q: 'Wo melde ich Bugs oder Wünsche?', a: 'Am besten per Hilfe-Ticket im Discord — als Beta-Tester fließt dein Feedback direkt in die Entwicklung ein.' },
+  { q: 'Wo melde ich Bugs oder Wünsche?', a: 'Am besten per <strong>Hilfe-Ticket</strong> im Discord — dein Feedback fließt direkt in die Entwicklung ein.' },
 ];
 
 function acc(title, bodyHTML) {
