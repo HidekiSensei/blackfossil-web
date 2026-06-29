@@ -28,13 +28,18 @@
       <p>BlackFossil bleibt <strong>kostenlos spielbar</strong>. Mit einem monatlichen Rang hältst du den Server am Laufen und schaltest <strong>Komfort- & Kosmetik-Perks</strong> frei — <strong>kein Pay-to-Win</strong>. Monatlich kündbar.</p>
     </div>
 
+    <!-- Vorverkauf-Hinweis (nach Go-Live entfernen) -->
+    <div class="presale-note">
+      🚀 <strong>Vorverkauf:</strong> Sichere dir deinen Rang schon jetzt — die Ingame-Vorteile schalten wir am <strong>Mittwoch</strong> frei. Deine Punkte &amp; Perks landen dann automatisch bei dir, ganz nahtlos.
+    </div>
+
     <!-- Login-Status -->
     <div id="loginBox" class="login-box">
       <p>Logge dich zuerst mit <strong>Discord</strong> ein — so landet dein Rang automatisch im richtigen Account.</p>
       <button id="loginBtn" class="btn btn-lg">🔗 Mit Discord einloggen</button>
     </div>
     <div id="userBox" class="user-box" hidden>
-      <span>Eingeloggt als <strong id="userName"></strong></span>
+      <span>Eingeloggt als <strong id="userName"></strong><span id="userRank"></span></span>
       <button id="logoutBtn" class="btn btn-sm btn-ghost">Abmelden</button>
     </div>
 
@@ -54,40 +59,138 @@
 
   <section class="section alt">
     <div class="tiers tiers-buy">
-      <div class="tier">
+      <div class="tier" data-tier="knochen">
         <div class="tier-ico">🦴</div>
         <h3>Knochen</h3>
+        <p class="tier-sub">Dein Einstieg ins Inselleben.</p>
         <div class="tier-price"><span class="grad">4,99&nbsp;€</span><span class="per">/ Monat</span></div>
-        <ul class="tier-perks">
-          <li>Supporter-Rolle im Discord</li>
-          <li>Komfort-Extras im Overlay</li>
-          <li>Unterstützt den Server ❤️</li>
+        <ul class="tier-perks perk-emoji">
+          <li>💰 <strong>1.000 Punkte</strong> Willkommens-Bonus</li>
+          <li>🏅 Besonderer Rang: Knochen</li>
+          <li>🌱 1 Grow-Token alle 2 Wochen</li>
+          <li>🚗 Garage: 20 Dino-Plätze</li>
+          <li>📜 1 Quest</li>
+          <li>🛒 +1 Markt-Angebot (mehr Token &amp; Dinos)</li>
+          <li>🎁 1 Lootbox pro Woche</li>
+          <li>🎨 Halbe Auswahl der Overlay-Farbthemen</li>
+          <li>💾 2 Skin-Slots zum Speichern</li>
+          <li>⏱️ Ein-/Auspacken-Cooldown: 20 Min</li>
         </ul>
-        <div class="pp-btn" id="pp-knochen"></div>
+        <div class="tier-foot" data-foot="knochen"><div class="pp-btn" id="pp-knochen"></div></div>
       </div>
-      <div class="tier tier-feat">
+      <div class="tier tier-feat" data-tier="bernstein">
         <div class="tier-tag">Beliebt</div>
-        <div class="tier-ico">🟠</div>
+        <svg class="tier-gem" viewBox="0 0 64 64" aria-hidden="true">
+          <defs>
+            <linearGradient id="ambCrown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe9b0"/><stop offset="1" stop-color="#f6a417"/></linearGradient>
+            <linearGradient id="ambBody" x1="0" y1="0" x2=".5" y2="1"><stop offset="0" stop-color="#f7a91b"/><stop offset="1" stop-color="#a8530a"/></linearGradient>
+            <radialGradient id="ambGlow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f59e0b" stop-opacity=".6"/><stop offset="1" stop-color="#f59e0b" stop-opacity="0"/></radialGradient>
+          </defs>
+          <circle cx="32" cy="34" r="30" fill="url(#ambGlow)"/>
+          <polygon points="32,7 51,23 13,23" fill="url(#ambCrown)"/>
+          <polygon points="13,23 51,23 32,59" fill="url(#ambBody)"/>
+          <polygon points="32,7 51,23 32,23" fill="#fff" opacity=".22"/>
+          <polyline points="13,23 32,32 51,23" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.6"/>
+          <line x1="32" y1="32" x2="32" y2="59" stroke="#fff" stroke-opacity=".3" stroke-width="1.4"/>
+        </svg>
         <h3>Bernstein</h3>
+        <p class="tier-sub">Mehr Komfort, mehr Möglichkeiten.</p>
         <div class="tier-price"><span class="grad">9,99&nbsp;€</span><span class="per">/ Monat</span></div>
-        <ul class="tier-perks">
-          <li>Alles aus <strong>Knochen</strong></li>
-          <li>Mehr Komfort- & Kosmetik-Perks</li>
-          <li>Bernstein-Rolle & Badge</li>
+        <ul class="tier-perks perk-emoji">
+          <li>✅ Alles aus <strong>Knochen</strong></li>
+          <li>💰 <strong>1.500 Punkte</strong> Willkommens-Bonus</li>
+          <li>🏅 Besonderer Rang: Bernstein</li>
+          <li>🌱 2 Grow-Token alle 2 Wochen</li>
+          <li>🚗 Garage: 40 Dino-Plätze</li>
+          <li>📜 2 Quests</li>
+          <li>🛒 +2 Markt-Angebote (mehr Token &amp; Dinos)</li>
+          <li>🎁 2 Lootboxen pro Woche</li>
+          <li>🎨 Alle Overlay-Farbthemen</li>
+          <li>💾 5 Skin-Slots zum Speichern</li>
+          <li>⏱️ Ein-/Auspacken-Cooldown: 10 Min</li>
         </ul>
-        <div class="pp-btn" id="pp-bernstein"></div>
+        <div class="tier-foot" data-foot="bernstein"><div class="pp-btn" id="pp-bernstein"></div></div>
       </div>
-      <div class="tier">
-        <div class="tier-ico">⬛</div>
+      <div class="tier" data-tier="obsidian">
+        <svg class="tier-gem" viewBox="0 0 64 64" aria-hidden="true">
+          <defs>
+            <linearGradient id="obsCrown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7b7f93"/><stop offset="1" stop-color="#2b2d3a"/></linearGradient>
+            <linearGradient id="obsBody" x1="0" y1="0" x2=".5" y2="1"><stop offset="0" stop-color="#33354a"/><stop offset="1" stop-color="#0a0a12"/></linearGradient>
+            <radialGradient id="obsGlow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".55"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient>
+          </defs>
+          <circle cx="32" cy="34" r="30" fill="url(#obsGlow)"/>
+          <polygon points="32,7 51,23 13,23" fill="url(#obsCrown)"/>
+          <polygon points="13,23 51,23 32,59" fill="url(#obsBody)"/>
+          <polygon points="32,7 51,23 32,23" fill="#c4b5fd" opacity=".28"/>
+          <polyline points="13,23 32,32 51,23" fill="none" stroke="#c4b5fd" stroke-opacity=".5" stroke-width="1.6"/>
+          <line x1="32" y1="32" x2="32" y2="59" stroke="#c4b5fd" stroke-opacity=".28" stroke-width="1.4"/>
+        </svg>
         <h3>Obsidian</h3>
+        <p class="tier-sub">Das volle Black-Fossil-Erlebnis — gestalte die Insel mit.</p>
         <div class="tier-price"><span class="grad">19,99&nbsp;€</span><span class="per">/ Monat</span></div>
-        <ul class="tier-perks">
-          <li>Alles aus <strong>Bernstein</strong></li>
-          <li>Maximaler Komfort, alle Kosmetik-Perks</li>
-          <li>Obsidian-Rolle & Badge</li>
+        <ul class="tier-perks perk-emoji">
+          <li>✅ Alles aus <strong>Bernstein</strong></li>
+          <li>💰 <strong>2.000 Punkte</strong> Willkommens-Bonus</li>
+          <li>🏅 Besonderer Rang: Obsidian</li>
+          <li>🌱 3 Grow-Token alle 2 Wochen</li>
+          <li>🚗 Garage: 80 Dino-Plätze</li>
+          <li>📜 3 Quests</li>
+          <li>🛒 +3 Markt-Angebote (mehr Token &amp; Dinos)</li>
+          <li>🎉 Eigene Events organisieren (wir stellen die Belohnungen)</li>
+          <li>🧟 Zombie-Dino-Knopf</li>
+          <li>🎁 3 Lootboxen pro Woche</li>
+          <li>🎨 Alle Overlay-Farbthemen</li>
+          <li>💾 10 Skin-Slots zum Speichern</li>
+          <li>⏱️ Ein-/Auspacken-Cooldown: 5 Min</li>
         </ul>
-        <div class="pp-btn" id="pp-obsidian"></div>
+        <div class="tier-foot" data-foot="obsidian"><div class="pp-btn" id="pp-obsidian"></div></div>
       </div>
+    </div>
+
+    <!-- Kostenlos / Free-Tier -->
+    <div class="free-note">
+      🆓 <strong>Kostenlos · Rang „Fossil"</strong> — voll spielbar mit Voice, Overlay, Garage &amp; Markt. Dazu:
+      <strong>500 Punkte</strong> Willkommensbonus für den Discord-Beitritt · Skin anpassen gegen Punkte
+      (50 / Farbe · Speichern 500 · Vorlage anwenden 250).
+    </div>
+
+    <!-- Mehr Infos zu den Rängen -->
+    <div class="rank-more">
+      <button id="rankMoreBtn" class="btn btn-ghost" aria-expanded="false" aria-controls="rankDetails">ℹ️ Mehr Infos zu den Rängen</button>
+    </div>
+    <div id="rankDetails" class="rank-details" hidden>
+      <table class="rank-table">
+        <thead>
+          <tr>
+            <th>Was du bekommst</th>
+            <th>Kostenlos</th>
+            <th>🦴 Knochen</th>
+            <th>Bernstein</th>
+            <th>Obsidian</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="feat">Server, Proximity-Voice &amp; komplettes Overlay</td><td class="col yes">✓</td><td class="col yes">✓</td><td class="col yes">✓</td><td class="col yes">✓</td></tr>
+          <tr><td class="feat">Garage &amp; Markt (Handel)</td><td class="col yes">✓</td><td class="col yes">✓</td><td class="col yes">✓</td><td class="col yes">✓</td></tr>
+          <tr><td class="feat">Willkommens-Bonus (Punkte, einmalig)</td><td class="col yes">500¹</td><td class="col yes">1.000</td><td class="col yes">1.500</td><td class="col yes">2.000</td></tr>
+          <tr><td class="feat">Besonderer Rang &amp; Badge</td><td class="col no">–</td><td class="col yes">🦴</td><td class="col yes">🟠</td><td class="col yes">🟣</td></tr>
+          <tr><td class="feat">🌱 Grow-Token (alle 2 Wochen)</td><td class="col no">–</td><td class="col yes">1</td><td class="col yes">2</td><td class="col yes">3</td></tr>
+          <tr><td class="feat">🚗 Garage: Dino-Plätze</td><td class="col">Standard</td><td class="col yes">20</td><td class="col yes">40</td><td class="col yes">80</td></tr>
+          <tr><td class="feat">📜 Quests</td><td class="col no">–</td><td class="col yes">1</td><td class="col yes">2</td><td class="col yes">3</td></tr>
+          <tr><td class="feat">🛒 Extra Markt-Angebote</td><td class="col no">–</td><td class="col yes">+1</td><td class="col yes">+2</td><td class="col yes">+3</td></tr>
+          <tr><td class="feat">🎁 Lootboxen pro Woche</td><td class="col no">–</td><td class="col yes">1</td><td class="col yes">2</td><td class="col yes">3</td></tr>
+          <tr><td class="feat">🎨 Overlay-Farbthemen</td><td class="col no">–</td><td class="col yes">Halbe Auswahl</td><td class="col yes">Alle</td><td class="col yes">Alle</td></tr>
+          <tr><td class="feat">💾 Skin-Slots zum Speichern</td><td class="col">gegen Punkte²</td><td class="col yes">2</td><td class="col yes">5</td><td class="col yes">10</td></tr>
+          <tr><td class="feat">⏱️ Ein-/Auspacken-Cooldown</td><td class="col">Standard</td><td class="col yes">20 Min</td><td class="col yes">10 Min</td><td class="col yes">5 Min</td></tr>
+          <tr><td class="feat">🎉 Eigene Events organisieren (Belohnungen von uns)</td><td class="col no">–</td><td class="col no">–</td><td class="col no">–</td><td class="col yes">✓</td></tr>
+          <tr><td class="feat">🧟 Zombie-Dino-Knopf</td><td class="col no">–</td><td class="col no">–</td><td class="col no">–</td><td class="col yes">✓</td></tr>
+        </tbody>
+      </table>
+      <p class="rank-note">
+        💜 <strong>Kein Pay-to-Win</strong> — alle Stufen geben nur Komfort &amp; Kosmetik, keinen Kampfvorteil.
+        Höhere Ränge enthalten immer alle Perks der darunterliegenden. Der Willkommens-Bonus wird einmalig gutgeschrieben (beim Upgrade die Differenz) und landet auf deinem verknüpften Spiel-Account.<br>
+        <span class="small">¹ Free-Bonus: 500 Punkte für den Discord-Beitritt. &nbsp; ² Free: Skin anpassen gegen Punkte (50 / Farbe, Speichern 500, Vorlage 250).</span>
+      </p>
     </div>
 
     <p class="muted small center" style="margin-top:24px;max-width:680px;margin-left:auto;margin-right:auto">
@@ -109,10 +212,11 @@
   <!-- Erfolg-Overlay -->
   <div id="thanks" class="thanks" hidden>
     <div class="thanks-card">
+      <button type="button" class="thanks-x" id="thanksX" aria-label="Schließen">×</button>
       <div class="thanks-ico">⚡</div>
       <h2>Danke für deine Unterstützung!</h2>
       <p>Dein Rang wird gerade freigeschaltet — das kann ein paar Sekunden dauern. Du siehst ihn gleich in Discord & im Overlay.</p>
-      <button class="btn btn-lg" onclick="document.getElementById('thanks').hidden=true">Schließen</button>
+      <button class="btn btn-lg" id="thanksClose">Schließen</button>
     </div>
   </div>
 

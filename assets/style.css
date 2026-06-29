@@ -244,14 +244,25 @@ footer { text-align: center; padding: 40px 6vw; border-top: 1px solid var(--bord
 .tier-perks li { color: var(--muted); padding: 7px 0 7px 26px; position: relative; font-size: .95rem; border-top: 1px solid var(--border); }
 .tier-perks li:first-child { border-top: 0; }
 .tier-perks li::before { content: "⚡"; position: absolute; left: 0; color: var(--accent2); }
+/* Emoji-Liste (volle Perk-Aufzählung): Emoji ist der Bullet, kein ⚡ davor */
+.tier-perks.perk-emoji li { padding-left: 0; }
+.tier-perks.perk-emoji li::before { content: none; }
+.tier-sub { color: var(--muted); font-size: .9rem; margin: -2px 0 12px; min-height: 2.4em; }
+.free-note { max-width: 1000px; margin: 22px auto 0; text-align: center; line-height: 1.6;
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 16px 20px; color: var(--muted); }
+.free-note strong { color: var(--text); }
 .pp-btn { margin-top: auto; min-height: 46px; }
 
 /* ── Abo-Seite: Login + Status ─────────────────────────────────────────── */
 .abo-head { padding-top: 120px; }
 .login-box, .user-box { max-width: 520px; margin: 8px auto 0; text-align: center; }
 .login-box p { color: var(--muted); margin-bottom: 14px; }
-.user-box { display: flex; align-items: center; justify-content: center; gap: 14px;
+.user-box { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;
   background: rgba(var(--accent-rgb),0.08); border: 1px solid var(--border); border-radius: 12px; padding: 12px 18px; }
+.rank-pill { color: var(--accent2); font-weight: 700; }
+.presale-note { max-width: 640px; margin: 18px auto 0; text-align: center; line-height: 1.55;
+  background: rgba(var(--accent-rgb),0.10); border: 1px solid var(--accent2); border-radius: 12px;
+  padding: 13px 18px; color: var(--text); font-size: .95rem; }
 
 /* ── Footer-Rechtslinks ────────────────────────────────────────────────── */
 .foot-legal { margin: 4px 0; }
@@ -259,12 +270,49 @@ footer { text-align: center; padding: 40px 6vw; border-top: 1px solid var(--bord
 .foot-legal a:hover { color: var(--accent); }
 
 /* ── Danke-Overlay ─────────────────────────────────────────────────────── */
-.thanks { position: fixed; inset: 0; background: rgba(5,3,12,.8); backdrop-filter: blur(4px);
-  display: flex; align-items: center; justify-content: center; z-index: 50; padding: 20px; }
-.thanks-card { background: var(--card); border: 1px solid var(--accent); border-radius: 18px;
+/* z-index extrem hoch: muss ÜBER den PayPal-Buttons/-iFrames liegen, sonst schieben
+   die sich vor das Popup und der Schließen-Button ist nicht klickbar. */
+.thanks { position: fixed; inset: 0; background: rgba(5,3,12,.85); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center; z-index: 2147483000; padding: 20px; }
+.thanks-card { position: relative; background: var(--card); border: 1px solid var(--accent); border-radius: 18px;
   padding: 40px 34px; max-width: 460px; text-align: center; box-shadow: 0 0 60px -15px rgba(var(--accent-rgb),0.8); }
 .thanks-ico { font-size: 3rem; margin-bottom: 12px; }
 .thanks-card p { color: var(--muted); margin: 12px 0 24px; line-height: 1.5; }
+.thanks-x { position: absolute; top: 12px; right: 16px; background: none; border: 0; color: var(--muted);
+  font-size: 1.6rem; line-height: 1; cursor: pointer; padding: 4px 8px; border-radius: 8px; }
+.thanks-x:hover { color: var(--text); background: rgba(255,255,255,.08); }
+
+/* ── Rang-Icons (Edelstein-SVGs) ───────────────────────────────────────── */
+.tier-gem { width: 56px; height: 56px; display: block; margin: 0 auto 10px;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,.45)); }
+
+/* ── Abo-Karten: aktueller Rang / Upgrade / enthalten ──────────────────── */
+.tier.is-current { border-color: var(--accent2); box-shadow: 0 0 0 1px var(--accent2), 0 18px 50px -20px rgba(var(--accent-rgb),0.7); }
+.tier-foot { margin-top: auto; }
+.tier-current, .tier-included { border-radius: 999px; padding: 13px 16px;
+  font-weight: 700; text-align: center; font-size: .95rem; }
+.tier-current { background: rgba(var(--accent-rgb),.16); color: var(--text); border: 1px solid var(--accent2); }
+.tier-included { background: var(--bg2); color: var(--muted); border: 1px dashed var(--border); }
+.tier-upgrade-tag { display: inline-block; margin-bottom: 10px; font-size: .8rem; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase; color: var(--accent2);
+  background: rgba(var(--accent-rgb),.12); border: 1px solid var(--accent2); border-radius: 999px; padding: 4px 12px; }
+
+/* ── „Mehr Infos zu den Rängen" — Detail-Tabelle ──────────────────────── */
+.rank-more { text-align: center; margin-top: 26px; }
+.rank-details { max-width: 1000px; margin: 22px auto 0; overflow-x: auto; }
+.rank-table { width: 100%; border-collapse: collapse; min-width: 640px;
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+.rank-table th, .rank-table td { padding: 12px 14px; text-align: left; border-top: 1px solid var(--border); font-size: .95rem; }
+.rank-table thead th { background: rgba(var(--accent-rgb),.08); color: var(--text); font-weight: 700;
+  border-top: 0; text-align: center; }
+.rank-table thead th:first-child { text-align: left; }
+.rank-table td { color: var(--muted); }
+.rank-table td.feat { color: var(--text); font-weight: 600; }
+.rank-table td.col { text-align: center; }
+.rank-table .yes { color: var(--accent2); font-weight: 700; }
+.rank-table .no { color: var(--muted); opacity: .5; }
+.rank-note { color: var(--muted); font-size: .85rem; margin-top: 12px; max-width: 760px;
+  margin-left: auto; margin-right: auto; line-height: 1.5; }
 
 /* ── Rechts-Seiten (Impressum/AGB/Datenschutz) ─────────────────────────── */
 .legal { max-width: 820px; margin: 0 auto; padding: 120px 22px 60px; }
