@@ -287,3 +287,6 @@ footer { text-align: center; padding: 40px 6vw; border-top: 1px solid var(--bord
   text-align: center; font-size: 1rem; letter-spacing: .02em; }
 .creator-box input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(var(--accent-rgb),.18); }
 .creator-box p { margin-top: 9px; line-height: 1.5; }
+
+/* Fix: hidden-Attribut muss display-setzende Klassen (.thanks/.user-box) schlagen */
+[hidden] { display: none !important; }
