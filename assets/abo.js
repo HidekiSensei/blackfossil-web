@@ -69,6 +69,24 @@ $('logoutBtn').addEventListener('click', () => {
 
 renderLoginState();
 
+// Aktuellen Abo-Rang frisch vom Server holen — auch für bereits eingeloggte Nutzer,
+// deren Login-Rücksprung (abo-Param) fehlt. Aktualisiert localStorage + Anzeige.
+function refreshAboTier() {
+  const did = localStorage.getItem('bf_discord_id');
+  if (!did) return Promise.resolve();
+  return fetch(`${CONFIG.TOKEN_BASE}/public/abo?discord_id=${encodeURIComponent(did)}`)
+    .then((r) => (r.ok ? r.json() : null))
+    .then((d) => {
+      if (d && 'tier' in d) {
+        if (d.tier) localStorage.setItem('bf_abo_tier', d.tier);
+        else localStorage.removeItem('bf_abo_tier');
+        renderLoginState();
+      }
+    })
+    .catch(() => {});
+}
+const aboTierReady = refreshAboTier();
+
 // ── 2) „Mehr Infos zu den Rängen" aufklappen ─────────────────────────────────
 $('rankMoreBtn')?.addEventListener('click', () => {
   const d = $('rankDetails');
@@ -96,7 +114,8 @@ if (!configured) {
   const s = document.createElement('script');
   s.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(CONFIG.PAYPAL_CLIENT_ID)}` +
           `&vault=true&intent=subscription&currency=EUR`;
-  s.onload = renderButtons;
+  // Erst den aktuellen Rang abwarten, dann Buttons/Status rendern (korrekte Karten-Zustände).
+  s.onload = () => aboTierReady.then(renderButtons);
   s.onerror = () => { $('setupNote').hidden = false; };
   document.head.appendChild(s);
 }
