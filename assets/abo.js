@@ -123,6 +123,8 @@ if (!configured) {
 // Einen PayPal-Subscribe-Button in #pp-<key> rendern.
 function renderPayPalButton(key) {
   window.paypal.Buttons({
+    // Nur der PayPal-Button — keine Debit-/Kreditkarte o. a. Funding-Quellen.
+    fundingSource: window.paypal.FUNDING.PAYPAL,
     style: { layout: 'vertical', color: 'gold', shape: 'pill', label: 'subscribe', height: 44 },
     // Vor dem Kauf: Login erzwingen, damit die Discord-ID als custom_id mitgeht
     onClick: (data, actions) => {
