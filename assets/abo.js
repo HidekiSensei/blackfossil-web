@@ -15,6 +15,9 @@ const CONFIG = {
 // Abo-Ränge in aufsteigender Reihenfolge + hübsche Labels.
 const ABO_ORDER = ['knochen', 'bernstein', 'obsidian'];
 const RANK_LABEL = { knochen: 'Knochen', bernstein: 'Bernstein', obsidian: 'Obsidian' };
+// Ränge, bei denen PayPal aktuell deaktiviert ist (nur Karte/Stripe) — z. B. wegen PayPal-
+// Empfangslimit auf höhere Beträge. Einfach leeren, sobald PayPal für den Rang wieder geht.
+const PAYPAL_DISABLED_TIERS = ['obsidian'];
 
 const $ = (id) => document.getElementById(id);
 const RETURN_URL = location.origin + location.pathname; // ohne Query
@@ -262,7 +265,14 @@ function renderButtons() {
     if (curIdx >= 0 && idx > curIdx) {
       foot.insertAdjacentHTML('afterbegin', '<div class="tier-upgrade-tag">⬆️ Upgrade</div>');
     }
-    renderPayPalButton(key);
+    if (PAYPAL_DISABLED_TIERS.includes(key)) {
+      // PayPal für diesen Rang deaktiviert → nur Karte/Wallet, mit kurzem Hinweis.
+      foot.insertAdjacentHTML('beforeend',
+        '<div style="font-size:12px;color:#9ca3af;margin-top:8px;text-align:center;line-height:1.35">' +
+        'ℹ️ Für diesen Rang ist PayPal aktuell nicht verfügbar — bitte per <strong>Karte, Apple&nbsp;Pay oder Google&nbsp;Pay</strong> zahlen.</div>');
+    } else {
+      renderPayPalButton(key);
+    }
     renderStripeButton(key);
   }
 }
