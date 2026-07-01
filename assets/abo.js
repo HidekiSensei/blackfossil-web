@@ -33,6 +33,12 @@ const RETURN_URL = location.origin + location.pathname; // ohne Query
   }
 })();
 
+// Rückkehr vom Stripe-Checkout (success_url ?paid=1): Danke-Overlay zeigen + Query putzen.
+if (new URLSearchParams(location.search).has('paid')) {
+  history.replaceState({}, '', RETURN_URL);
+  const _t = $('thanks'); if (_t) _t.hidden = false;
+}
+
 function isLoggedIn() { return !!localStorage.getItem('bf_discord_id'); }
 
 // Aktueller Abo-Rang als Key ('knochen'|'bernstein'|'obsidian') oder null.
@@ -153,6 +159,40 @@ function renderPayPalButton(key) {
   }).render('#pp-' + key);
 }
 
+// „Mit Karte zahlen" (Stripe Checkout) — erstellt serverseitig eine Session mit der Discord-ID
+// als client_reference_id und leitet zum Stripe-Hosted-Checkout weiter.
+function renderStripeButton(key) {
+  const foot = document.querySelector(`.tier-foot[data-foot="${key}"]`);
+  if (!foot) return;
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'stripe-btn';
+  btn.textContent = '💳 Mit Karte zahlen';
+  btn.style.cssText = 'width:100%;margin-top:8px;padding:12px;border:0;border-radius:24px;background:#635bff;color:#fff;font-weight:700;font-size:15px;cursor:pointer';
+  btn.addEventListener('click', async () => {
+    if (!isLoggedIn()) {
+      alert('Bitte logge dich zuerst mit Discord ein, damit dein Rang im richtigen Account landet.');
+      return;
+    }
+    btn.disabled = true; const orig = btn.textContent; btn.textContent = '… wird geladen';
+    try {
+      const did = localStorage.getItem('bf_discord_id') || '';
+      const code = ($('creatorCode')?.value || '').trim();
+      const r = await fetch(`${CONFIG.TOKEN_BASE}/stripe/checkout`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tier: RANK_LABEL[key], discordId: did, creatorCode: code }),
+      });
+      const d = await r.json();
+      if (!r.ok || !d.url) throw new Error(d.error || 'Fehler beim Checkout');
+      location.href = d.url;
+    } catch (e) {
+      alert('Bei der Zahlung ist etwas schiefgelaufen: ' + e.message);
+      btn.disabled = false; btn.textContent = orig;
+    }
+  });
+  foot.appendChild(btn);
+}
+
 // Buttons + Karten-Status (aktueller Rang / Upgrade / enthalten) aufbauen.
 function renderButtons() {
   const cur = currentAboKey();
@@ -180,5 +220,6 @@ function renderButtons() {
       foot.insertAdjacentHTML('afterbegin', '<div class="tier-upgrade-tag">⬆️ Upgrade</div>');
     }
     renderPayPalButton(key);
+    renderStripeButton(key);
   }
 }
