@@ -28,6 +28,8 @@ const RETURN_URL = location.origin + location.pathname; // ohne Query
     localStorage.setItem('bf_discord_name', q.get('name') || 'Spieler');
     // Aktuellen Abo-Rang merken (kommt vom token-service; leer = kein Rang).
     if (q.has('abo')) localStorage.setItem('bf_abo_tier', q.get('abo') || '');
+    // Signiertes Web-Token für abgesicherte Aktionen (Kündigung).
+    if (q.get('wtoken')) localStorage.setItem('bf_wtoken', q.get('wtoken'));
     // Query aus der URL entfernen (Discord-ID nicht sichtbar lassen)
     history.replaceState({}, '', RETURN_URL);
   }
@@ -59,6 +61,46 @@ function renderLoginState() {
       rankEl.textContent = cur ? ` · Aktueller Rang: ${RANK_LABEL[cur]}` : ' · Noch kein Rang';
       rankEl.className = cur ? 'rank-pill' : 'muted small';
     }
+    renderCancelButton(cur);
+  }
+}
+
+// „Abo kündigen"-Button — nur sichtbar, wenn man einen Rang hat. Abgesichert über das
+// signierte Web-Token (wtoken), das der Login mitgibt.
+function renderCancelButton(cur) {
+  let btn = $('cancelSubBtn');
+  if (!cur) { if (btn) btn.hidden = true; return; }
+  if (!btn) {
+    btn = document.createElement('button');
+    btn.id = 'cancelSubBtn';
+    btn.type = 'button';
+    btn.textContent = 'Abo kündigen';
+    btn.style.cssText = 'margin-left:10px;padding:6px 12px;border:1px solid rgba(255,255,255,0.28);border-radius:16px;background:transparent;color:#f87171;font-size:13px;cursor:pointer';
+    btn.addEventListener('click', cancelSubscription);
+    ($('userBox') || document.body).appendChild(btn);
+  }
+  btn.hidden = false;
+}
+
+async function cancelSubscription() {
+  const wtoken = localStorage.getItem('bf_wtoken') || '';
+  if (!wtoken) { alert('Bitte logge dich einmal neu mit Discord ein, dann kannst du kündigen.'); return; }
+  if (!confirm('Möchtest du dein Abo wirklich kündigen?')) return;
+  const btn = $('cancelSubBtn'); if (btn) { btn.disabled = true; btn.textContent = '… wird gekündigt'; }
+  try {
+    const r = await fetch(`${CONFIG.TOKEN_BASE}/me/cancel-subscription`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ wtoken }),
+    });
+    const d = await r.json();
+    if (!r.ok || !d.ok) throw new Error(d.error || 'Kündigung fehlgeschlagen');
+    alert(d.atPeriodEnd
+      ? 'Dein Abo wurde gekündigt. Dein Rang bleibt bis zum Ende des bezahlten Zeitraums aktiv, danach wird er automatisch entfernt.'
+      : 'Dein Abo wurde gekündigt. Dein Rang wird zeitnah entfernt.');
+    refreshAboTier();
+  } catch (e) {
+    alert('Kündigung fehlgeschlagen: ' + e.message);
+  } finally {
+    const b = $('cancelSubBtn'); if (b) { b.disabled = false; b.textContent = 'Abo kündigen'; }
   }
 }
 
@@ -69,6 +111,7 @@ $('logoutBtn').addEventListener('click', () => {
   localStorage.removeItem('bf_discord_id');
   localStorage.removeItem('bf_discord_name');
   localStorage.removeItem('bf_abo_tier');
+  localStorage.removeItem('bf_wtoken');
   renderLoginState();
   location.reload();
 });
