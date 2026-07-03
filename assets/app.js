@@ -45,7 +45,7 @@ const RULES = [
     <p class="r-sub">🛡️ Schutz & Kampfansage</p>
     <ul><li>Friedliche Koexistenz steht unter <strong>Schutz</strong> — keine Überraschungsangriffe innerhalb einer friedlichen Gruppe.</li>
     <li>Ein Kampf beginnt erst, wenn das <strong>Ziel per Voice-Chat in Hörweite angesagt ("gecalled")</strong> wird — dann ist die Gruppe zum Kampf freigegeben.</li>
-    <li><strong>Ausnahme — Deinosuchus & Herrerasaurus:</strong> von der Pflicht zur vorherigen Kampfansage (Call) <strong>ausgenommen</strong>. Ihre Spielweise basiert auf dem Überraschungsmoment — ein vorheriger Call würde den natürlichen <strong>Ambush-Charakter</strong> dieser Tiere zunichtemachen. Gilt <strong>ausschließlich für den ersten Angriff</strong>. Alle übrigen Serverregeln (z. B. kein KOS ohne Grund, keine Safezone-Verstöße) bleiben uneingeschränkt bestehen.</li>
+    <li><strong>Ausnahme — Deinosuchus & Herrerasaurus:</strong> vom Call <strong>ausgenommen</strong> — ihre Spielweise lebt vom Überraschungsmoment (<strong>Ambush</strong>). Gilt <strong>nur für den ersten Angriff</strong>; alle übrigen Regeln (kein KOS ohne Grund, keine Safezone-Verstöße) bleiben bestehen.</li>
     <li>Ab dem Call — bzw. bei <strong>Deinosuchus & Herrerasaurus ab dem ersten Angriff</strong> — gilt nur noch <strong>Flucht oder Kampf</strong>, kein Zurückrudern.</li></ul>
     <p class="r-sub">🥚 Sanctuary (Baby-Zone)</p>
     <ul><li><strong>Kein Abcampen der Sanctuary / Baby-Zone</strong> — das Lauern an, um oder in der Nähe der Sanctuary, um heraus- oder hineinkommende (vor allem junge) Dinos abzufangen, ist verboten.</li>
