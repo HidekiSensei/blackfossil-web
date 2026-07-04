@@ -51,27 +51,6 @@ const RULES = [
     <ul><li><strong>Kein Abcampen der Sanctuary / Baby-Zone</strong> — das Lauern an, um oder in der Nähe der Sanctuary, um heraus- oder hineinkommende (vor allem junge) Dinos abzufangen, ist verboten.</li>
     <li>Junge Dinos müssen die Zone <strong>gefahrlos betreten und verlassen</strong> können — kein Belagern der Ein-/Ausgänge, kein Abpassen von Spielern an der Zonengrenze.</li></ul>` },
 
-  { title: '🎭 Roleplay-Regeln (RP)', body: `
-    <p>Black Fossil ist ein <strong>RP-/Realism-Server</strong>: Du spielst deinen Dino wie ein <strong>echtes Tier</strong>, nicht wie eine Spielfigur. Jede Aktion — vor allem Kämpfe & Tötungen — muss durch <strong>nachvollziehbares, ausgespieltes Verhalten</strong> gedeckt sein.</p>
-    <p class="r-sub">🍖 Tötungen müssen ausgespielt werden — „Ich habe Hunger" reicht NICHT</p>
-    <ul><li>Ein Grund muss <strong>im Spiel sichtbar ausgespielt</strong> werden, nicht nur behauptet.</li>
-    <li>❌ <strong>Nicht ausreichend:</strong> im Voice/Chat „ich hab Hunger" sagen und dann jemanden töten.</li>
-    <li>✅ <strong>Richtig:</strong> als hungriger Karnivore tatsächlich <strong>jagen</strong> — anpirschen, verfolgen, reißen und danach <strong>wirklich fressen</strong>. Hunger zeigt sich im Verhalten (Suche nach Beute/AI), nicht in einem Satz.</li>
-    <li>Wer nach dem Kill <strong>nicht frisst</strong> oder offensichtlich nur einen Vorwand sucht, verstößt gegen die RP-Regeln (siehe „Kein KOS ohne Grund").</li>
-    <li>Auch Revier-, Nest-, Selbst- & Rudelverteidigung müssen durch dein <strong>Verhalten</strong> erkennbar sein — nicht per Ansage.</li></ul>
-    <p class="r-sub">🚫 Kein Metagaming („Meta")</p>
-    <ul><li>Dein Dino weiß nur, was er <strong>im Spiel</strong> sieht & hört. Infos von außerhalb (Discord, Voice fremder Gruppen, Streams, DMs) dürfen <strong>nicht</strong> ingame ausgenutzt werden.</li>
-    <li>Verboten z. B.: „die schreiben im Discord, dass sie zu dritt sind → ich flieh schon vorher." Deine <strong>eigene</strong> Gruppe darf sich absprechen — du reagierst aber nur auf das, was dein Dino wahrnimmt.</li></ul>
-    <p class="r-sub">🚫 Kein Powergaming / Power-RP</p>
-    <ul><li>Zwinge anderen <strong>kein Ergebnis auf</strong>, ohne ihnen eine realistische <strong>Chance zur Reaktion</strong> (Flucht, Kampf, Drohung) zu geben.</li>
-    <li>Keine unrealistischen/„gamey" Aktionen: kein todesmutiges Rambo-Verhalten, keine Bug-/Anim-Cancel-Vorteile, kein erzwungener Kill ohne echten Kampf.</li></ul>
-    <p class="r-sub">🧠 Fear-RP / „Value your Life"</p>
-    <ul><li>Dein Dino <strong>will überleben</strong>. Verhalte dich der Größe & Lage entsprechend: kleine/junge Dinos fliehen vor großen Räubern, einzelne Tiere greifen keine klare Übermacht grundlos an.</li></ul>
-    <p class="r-sub">💬 In-Character bleiben</p>
-    <ul><li>Bleib ingame „in character" — spiel dein Tier. <strong>OOC</strong> (Out-of-Character) gehört in Discord/OOC-Voice oder wird mit <code>(( ))</code> kenntlich gemacht — nie als Ausrede fürs Regelbrechen.</li></ul>
-    <p class="r-sub">📋 Beweislast</p>
-    <ul><li>Bei Meldungen zählt das <strong>ausgespielte Verhalten im Clip</strong>. Ein nur behaupteter Grund („hatte Hunger") ohne sichtbares RP wird <strong>nicht anerkannt</strong>.</li></ul>` },
-
   { title: '🩸 PvP-Zone — The Pit', body: `
     <p>Hier ist Kampf das Ziel — aber <strong>fair</strong>.</p>
     <ul><li><strong>Zugang nur per Teleport</strong> — wer rein geht, willigt in PvP ein.</li>
