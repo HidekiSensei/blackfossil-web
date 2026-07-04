@@ -30,6 +30,7 @@ const RULES = [
     <li><strong>Cheats, Exploits, Bug-Abuse & Combat-Logging</strong> sind verboten → Ban.</li>
     <li><strong>Keine Heal-Token im Kampf</strong> — das Nutzen von Heal-Token während eines laufenden Kampfes ist verboten.</li>
     <li>Kein <strong>Stream-Sniping / Ghosting</strong>.</li>
+    <li><strong>🩷 Admin-Skin (Pink):</strong> exklusiv fürs Server-Team (auf jedem Dino). <strong>Spieler dürfen ihn nicht nutzen.</strong> Einem Dino in dieser Farbe (<strong>Admin im Dienst</strong>) <strong>komplett aus dem Weg gehen / ignorieren</strong> — Ausnahme: du bist direkt von einer Support-Situation betroffen. <strong>Angriff oder Tötung</strong> eines Team-Mitglieds in diesem Skin = <strong>sofortige, harte Konsequenzen.</strong></li>
     <li>Unwissenheit schützt nicht vor Konsequenzen.</li></ul>` },
 
   { title: '🦖 Realism-Zone — Hauptmap', body: `
