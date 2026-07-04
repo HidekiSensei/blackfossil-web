@@ -8,8 +8,8 @@ const CONFIG = {
     bernstein: 'P-04205520F4014394WNJBOHKA',
     obsidian:  'P-0CM96815S9809034NNJBOHKI',
   },
-  // Basis des token-service (Discord-Web-Login)
-  TOKEN_BASE: 'https://voice.blackfossil.de',
+  // Go-Backend (Discord-Web-Login, Stripe/PayPal, Abo-Status, Kündigung) — vom token-service migriert
+  TOKEN_BASE: 'https://api.blackfossil.de',
 };
 
 // Abo-Ränge in aufsteigender Reihenfolge + hübsche Labels.
