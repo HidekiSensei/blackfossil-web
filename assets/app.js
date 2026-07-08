@@ -1,5 +1,6 @@
 // ── Live-Server-Status ───────────────────────────────────────────────────────
-const STATUS_URL = 'https://voice.blackfossil.de/public/status';
+// Go-Backend (vom token-service migriert). Antwort: { up, online, max }, CORS offen.
+const STATUS_URL = 'https://api.blackfossil.de/public/status';
 async function loadStatus() {
   const dot = document.getElementById('statusDot');
   const txt = document.getElementById('statusText');
