@@ -1,0 +1,35 @@
+# GitLab CI — blackfossil-web (statisch, Cloudflare Pages via wrangler Direct Upload)
+# dev  -> Preview-Deploy (--branch=dev) -> dev.blackfossil-web.pages.dev  [berührt Prod NICHT]
+# main -> Prod-Deploy (manuell) -> www.blackfossil.de / isle.blackfossil.de
+# Läuft auf dem Linux-Runner. CLOUDFLARE_API_TOKEN + CLOUDFLARE_ACCOUNT_ID = CI-Variablen.
+stages:
+  - deploy
+
+.deploy: &deploy
+  stage: deploy
+  tags: [linux, deploy]
+  script:
+    - rm -rf _deploy && mkdir _deploy
+    - rsync -a --exclude='.git' --exclude='.gitlab-ci.yml' --exclude='_deploy' ./ _deploy/
+    - npx --yes wrangler@3 pages deploy _deploy --project-name=blackfossil-web --branch=$DEPLOY_BRANCH --commit-dirty=true
+
+deploy:test:
+  <<: *deploy
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev"'
+  variables:
+    DEPLOY_BRANCH: "dev"
+  environment:
+    name: test
+    url: https://dev.blackfossil-web.pages.dev
+
+deploy:prod:
+  <<: *deploy
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: manual
+  variables:
+    DEPLOY_BRANCH: "main"
+  environment:
+    name: production
+    url: https://www.blackfossil.de
