@@ -17,7 +17,7 @@ const ABO_ORDER = ['knochen', 'bernstein', 'obsidian'];
 const RANK_LABEL = { knochen: 'Knochen', bernstein: 'Bernstein', obsidian: 'Obsidian' };
 // Ränge, bei denen PayPal aktuell deaktiviert ist (nur Karte/Stripe) — z. B. wegen PayPal-
 // Empfangslimit auf höhere Beträge. Einfach leeren, sobald PayPal für den Rang wieder geht.
-const PAYPAL_DISABLED_TIERS = ['obsidian'];
+const PAYPAL_DISABLED_TIERS = [];
 
 const $ = (id) => document.getElementById(id);
 const RETURN_URL = location.origin + location.pathname; // ohne Query
